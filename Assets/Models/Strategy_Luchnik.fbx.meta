@@ -1,0 +1,157 @@
+fileFormatVersion: 2
+guid: 06c8d997783f5fb42a17d343387f366b
+timeCreated: 1720084461
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Armature
+    100002: Armature.001
+    100004: Bedro_L
+    100006: Bedro_P
+    100008: Bow
+    100010: Bow_1
+    100012: Bow_1_end
+    100014: Bow_1_end_end
+    100016: Bow_2
+    100018: Bow_2_end
+    100020: Bow_2_end_end
+    100022: Cylinder
+    100024: Golova
+    100026: Golova_end
+    100028: Kluchitsa_L
+    100030: Kluchitsa_L_end
+    100032: Kluchitsa_P
+    100034: Kluchitsa_P_end
+    100036: Kolchan
+    100038: Koleno_L
+    100040: Koleno_L_end
+    100042: Koleno_P
+    100044: Koleno_P_end
+    100046: Lokot_L
+    100048: Lokot_L_end
+    100050: Lokot_P
+    100052: Lokot_P_end
+    100054: Luchnik
+    100056: Rope
+    100058: Rope_end
+    100060: Rope_end_end
+    100062: Ruka_L
+    100064: Ruka_P
+    100066: Skelet
+    100068: //RootNode
+    100070: Tors
+    400000: Armature
+    400002: Armature.001
+    400004: Bedro_L
+    400006: Bedro_P
+    400008: Bow
+    400010: Bow_1
+    400012: Bow_1_end
+    400014: Bow_1_end_end
+    400016: Bow_2
+    400018: Bow_2_end
+    400020: Bow_2_end_end
+    400022: Cylinder
+    400024: Golova
+    400026: Golova_end
+    400028: Kluchitsa_L
+    400030: Kluchitsa_L_end
+    400032: Kluchitsa_P
+    400034: Kluchitsa_P_end
+    400036: Kolchan
+    400038: Koleno_L
+    400040: Koleno_L_end
+    400042: Koleno_P
+    400044: Koleno_P_end
+    400046: Lokot_L
+    400048: Lokot_L_end
+    400050: Lokot_P
+    400052: Lokot_P_end
+    400054: Luchnik
+    400056: Rope
+    400058: Rope_end
+    400060: Rope_end_end
+    400062: Ruka_L
+    400064: Ruka_P
+    400066: Skelet
+    400068: //RootNode
+    400070: Tors
+    2300000: Kolchan
+    3300000: Kolchan
+    4300000: Cylinder
+    4300002: Kolchan
+    4300004: Luchnik
+    9500000: //RootNode
+    13700000: Cylinder
+    13700002: Luchnik
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
