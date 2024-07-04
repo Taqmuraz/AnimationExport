@@ -163,6 +163,8 @@ public class AnimationExporter : MonoBehaviour
 		var w2l = gameObject.transform.worldToLocalMatrix;
 		var bones = Descendants(gameObject.transform).ToArray();
 		var frameCount = (int)(animationClip.length * animationClip.frameRate);
+		if (animationClip.length == 0) frameCount = 1;
+
 		List<Bone[]> frames = new List<Bone[]>();
 
 		foreach (var f in Enumerable.Range(0, frameCount))
