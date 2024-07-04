@@ -1,4 +1,4 @@
-{ :name "Block" :length 0.75 :frames 30 :bones { 
+{ :name "Block" :length 0.75 :bones { 
 	"Armature" [
 		[0 [100 0 0 0 0 -3.576279E-05 -100 0 0 100 -3.576279E-05 0 0 1.2 0 1]]
 	]

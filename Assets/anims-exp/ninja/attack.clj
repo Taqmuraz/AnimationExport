@@ -1,4 +1,4 @@
-{ :name "Attack" :length 0.6333333 :frames 37 :bones { 
+{ :name "Attack" :length 0.6333333 :bones { 
 	"Armature" [
 		[0 [100 0 0 0 0 -1.192093E-05 -99.99999 0 0 99.99999 -1.192093E-05 0 0 1.2 0 1]]
 	]

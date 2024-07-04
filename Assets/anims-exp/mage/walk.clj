@@ -1,4 +1,4 @@
-{ :name "Walk" :length 1.5 :frames 60 :bones { 
+{ :name "Walk" :length 1.5 :bones { 
 	"Armature" [
 		[0 [100 0 0 0 0 -1.192093E-05 -99.99999 0 0 99.99999 -1.192093E-05 0 0 1.2 0 1]]
 	]

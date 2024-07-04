@@ -178,7 +178,7 @@ public class AnimationExporter : MonoBehaviour
 		yield return new WaitForEndOfFrame();
 
 		var writer = new StringBuilder();
-		WriteAnimation(s => writer.Append(s), animationClip.name, animationClip.length, frameCount, lines);
+		WriteAnimation(s => writer.Append(s), animationClip.name, animationClip.length, lines);
 		Directory.CreateDirectory(outputPath);
 		var fileName = Path.Combine(outputPath, animationClip.name.ToLower()) + ".clj";
 		File.WriteAllText(fileName, writer.ToString());
@@ -209,9 +209,9 @@ public class AnimationExporter : MonoBehaviour
 		);
 		writer("\n\t]");
 	}
-	static void WriteAnimation(Writer writer, string name, float length, int frameCount, Line[] lines)
+	static void WriteAnimation(Writer writer, string name, float length, Line[] lines)
 	{
-		writer("{ " + string.Format(":name \"{0}\" :length {1} :frames {2} :bones", name, length, frameCount) + " { ");
+		writer("{ " + string.Format(":name \"{0}\" :length {1} :bones", name, length) + " { ");
 		foreach (var line in lines) WriteLine(writer, line);
 		writer("\n} }");
 	}

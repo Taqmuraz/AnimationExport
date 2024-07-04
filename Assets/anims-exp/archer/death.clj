@@ -1,4 +1,4 @@
-{ :name "Death" :length 0.4833333 :frames 28 :bones { 
+{ :name "Death" :length 0.4833333 :bones { 
 	"Armature" [
 		[0 [100 0 0 0 0 -1.192093E-05 -99.99999 0 0 99.99999 -1.192093E-05 0 0 1.2 0 1]]
 	]

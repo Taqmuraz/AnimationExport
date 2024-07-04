@@ -1,4 +1,4 @@
-{ :name "SphereSpell" :length 2.066667 :frames 61 :bones { 
+{ :name "SphereSpell" :length 2.066667 :bones { 
 	"Armature" [
 		[0 [100 0 0 0 0 -1.192093E-05 -99.99999 0 0 99.99999 -1.192093E-05 0 0 1.2 0 1]]
 	]

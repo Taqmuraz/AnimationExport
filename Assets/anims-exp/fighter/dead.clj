@@ -1,2 +1,2 @@
-{ :name "Dead" :length 0 :frames 0 :bones { 
+{ :name "Dead" :length 0 :bones { 
 } }

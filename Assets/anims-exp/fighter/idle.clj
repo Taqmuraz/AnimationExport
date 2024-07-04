@@ -1,4 +1,4 @@
-{ :name "Idle" :length 2 :frames 120 :bones { 
+{ :name "Idle" :length 2 :bones { 
 	"Armature" [
 		[0 [100 0 0 0 0 -3.576279E-05 -100 0 0 100 -3.576279E-05 0 0 1.2 0 1]]
 	]
