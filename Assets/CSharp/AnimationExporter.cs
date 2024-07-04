@@ -9,8 +9,9 @@ using UnityEngine;
 
 public class AnimationExporter : MonoBehaviour
 {
-	[SerializeField] AnimationClip animationClip;
+	[SerializeField] AnimationClip[] animationClips;
 	[SerializeField] string outputPath;
+	[SerializeField] AnimationClip defaultClip;
 
 	static IEnumerable<Transform> Descendants(Transform transform)
 	{
@@ -99,6 +100,12 @@ public class AnimationExporter : MonoBehaviour
 		return map.Select(p => new Line(p.Key, p.Value.ToArray())).ToArray();
 	}
 
+	[ContextMenu("Reset pose")]
+	void ResetPose()
+	{
+		defaultClip.SampleAnimation(gameObject, 0);
+	}
+
 	[ContextMenu("Create animation")]
 	void CreateAnimation ()
 	{
@@ -108,8 +115,17 @@ public class AnimationExporter : MonoBehaviour
 			return;
 		}
 		
-		StartCoroutine(CreateAnimation(gameObject, animationClip, outputPath));
+		StartCoroutine(CreateAnimations(gameObject, animationClips, outputPath));
 	}
+
+	IEnumerator CreateAnimations(GameObject gameObject, AnimationClip[] animationClips, string outputPath)
+	{
+		foreach (var animationClip in animationClips)
+		{
+			yield return StartCoroutine(CreateAnimation(gameObject, animationClip, outputPath));
+		}
+	}
+
 	static IEnumerator CreateAnimation(GameObject gameObject, AnimationClip animationClip, string outputPath)
 	{
 		var w2l = gameObject.transform.worldToLocalMatrix;
@@ -150,22 +166,21 @@ public class AnimationExporter : MonoBehaviour
 
 	static void WriteLine(Writer writer, Line line)
 	{
-		writer("\n\t{");
-		writer(string.Format(":name \"{0}\"", line.name));
-		writer("\n\t\t[");
+		writer("\n\t");
+		writer(string.Format("\"{0}\"", line.name));
+		writer(" [");
 		foreach (var l in line.points) writer(
-			string.Format("\n\t\t\t[{0} [{1}]]",
+			string.Format("\n\t\t[{0} [{1}]]",
 				l.time,
 				string.Join(" ", FloatToStringArray(MatrixToArray(l.matrix)))
 			)
 		);
-		writer("\n\t\t]");
-		writer("\n\t}");
+		writer("\n\t]");
 	}
 	static void WriteAnimation(Writer writer, string name, float length, int frameCount, Line[] lines)
 	{
-		writer("{ " + string.Format(":name \"{0}\" :length {1} :frames {2} :bones [ ", name, length, frameCount));
+		writer("{ " + string.Format(":name \"{0}\" :length {1} :frames {2} :bones", name, length, frameCount) + " { ");
 		foreach (var line in lines) WriteLine(writer, line);
-		writer("\n] }");
+		writer("\n} }");
 	}
 }
