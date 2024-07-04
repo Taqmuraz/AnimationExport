@@ -13,6 +13,36 @@ public class AnimationExporter : MonoBehaviour
 	[SerializeField] string outputPath;
 	[SerializeField] AnimationClip defaultClip;
 
+	class TransformState
+	{
+		public readonly Vector3 position;
+		public readonly Quaternion rotation;
+
+        public TransformState(Vector3 position, Quaternion rotation)
+        {
+            this.position = position;
+            this.rotation = rotation;
+        }
+    }
+
+	Dictionary<Transform, TransformState> states = new Dictionary<Transform, TransformState>();
+
+	void Start()
+	{
+		var descendants = Descendants(transform);
+		states = descendants.ToDictionary(t => t, t => new TransformState(t.localPosition, t.localRotation));
+	}
+
+	void ResetStates()
+	{
+		foreach (var d in Descendants(transform))
+		{
+			var t = states[d];
+			d.localPosition = t.position;
+			d.localRotation = t.rotation;
+		}
+	}
+
 	static IEnumerable<Transform> Descendants(Transform transform)
 	{
 		return Enumerable.Range(0, transform.childCount).Select(transform.GetChild).SelectMany(t => new Transform[] { t }.Concat(Descendants(t)));
@@ -123,6 +153,8 @@ public class AnimationExporter : MonoBehaviour
 		foreach (var animationClip in animationClips)
 		{
 			yield return StartCoroutine(CreateAnimation(gameObject, animationClip, outputPath));
+			ResetStates();
+			yield return new WaitForEndOfFrame();
 		}
 	}
 
