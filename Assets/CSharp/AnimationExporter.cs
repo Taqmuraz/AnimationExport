@@ -11,18 +11,24 @@ public class AnimationExporter : MonoBehaviour
 {
 	[SerializeField] AnimationClip[] animationClips;
 	[SerializeField] string outputPath;
-	[SerializeField] AnimationClip defaultClip;
+	[SerializeField] GameObject defaultStance;
 
 	class TransformState
 	{
 		public readonly Vector3 position;
 		public readonly Quaternion rotation;
 
-        public TransformState(Vector3 position, Quaternion rotation)
+		public TransformState(Vector3 position, Quaternion rotation)
         {
             this.position = position;
             this.rotation = rotation;
         }
+		public static TransformState Create(Transform transform)
+		{
+			return new TransformState(transform.localPosition, transform.localRotation);
+		}
+
+		public Matrix4x4 LocalMatrix() { return Matrix4x4.TRS(position, rotation, Vector3.one); }
     }
 
 	Dictionary<Transform, TransformState> states = new Dictionary<Transform, TransformState>();
@@ -102,14 +108,18 @@ public class AnimationExporter : MonoBehaviour
 	static Line CompressLine(Line line)
 	{
 		var points = line.points.Distinct(new PointComparer()).ToArray();
-		return new Line(line.name, points);
+		if (points.Length == 1) return new Line(line.name, points);
+		else return line;
 	}
 
-	static Bone TransformFrame(Matrix4x4 w2l, Transform transform, float time)
+	static Bone TransformFrame(Func<Transform, Matrix4x4> source, Transform transform, float time)
 	{
-		return new Bone(w2l * transform.localToWorldMatrix, transform.name, time);
+		var sm = source(transform);
+		var nm = TransformState.Create(transform).LocalMatrix();
+
+		return new Bone(sm.inverse * nm, transform.name, time);
 	}
-	static Bone[] AnimationFrame(GameObject root, AnimationClip clip, float time, Matrix4x4 w2l, Transform[] bones)
+	static Bone[] AnimationFrame(float time, Func<Transform, Matrix4x4> w2l, Transform[] bones)
 	{
 		return bones.Select(b => TransformFrame(w2l, b, time)).ToArray();
 	}
@@ -130,10 +140,32 @@ public class AnimationExporter : MonoBehaviour
 		return map.Select(p => new Line(p.Key, p.Value.ToArray())).ToArray();
 	}
 
+	string TransformPath(Transform t, Transform root)
+	{
+		List<string> p = new List<string>();
+		while (t != root)
+		{
+			p.Add(t.name);
+			t = t.parent;
+		}
+		return string.Join("/", p.ToArray());
+	}
+
 	[ContextMenu("Reset pose")]
 	void ResetPose()
 	{
-		defaultClip.SampleAnimation(gameObject, 0);
+		var dest_a = Descendants(gameObject.transform);
+		var dest_b = Descendants(defaultStance.transform).ToDictionary(t => TransformPath(t, defaultStance.transform));
+
+		foreach (var a in dest_a)
+		{
+			Transform b;
+			if (dest_b.TryGetValue(TransformPath(a, gameObject.transform), out b))
+			{
+				a.localPosition = b.localPosition;
+				a.localRotation = b.localRotation;
+			}
+		}
 	}
 
 	[ContextMenu("Create animation")]
@@ -152,15 +184,14 @@ public class AnimationExporter : MonoBehaviour
 	{
 		foreach (var animationClip in animationClips)
 		{
-			yield return StartCoroutine(CreateAnimation(gameObject, animationClip, outputPath));
+			yield return StartCoroutine(CreateAnimation(gameObject, t => states[t].LocalMatrix(), animationClip, outputPath));
 			ResetStates();
 			yield return new WaitForEndOfFrame();
 		}
 	}
 
-	static IEnumerator CreateAnimation(GameObject gameObject, AnimationClip animationClip, string outputPath)
+	static IEnumerator CreateAnimation(GameObject gameObject, Func<Transform, Matrix4x4> w2l, AnimationClip animationClip, string outputPath)
 	{
-		var w2l = gameObject.transform.worldToLocalMatrix;
 		var bones = Descendants(gameObject.transform).ToArray();
 		var frameCount = (int)(animationClip.length * animationClip.frameRate);
 		if (animationClip.length == 0) frameCount = 1;
@@ -172,7 +203,7 @@ public class AnimationExporter : MonoBehaviour
 			var t = f / (float)frameCount;
 			animationClip.SampleAnimation(gameObject, t);
 			yield return new WaitForEndOfFrame();
-			frames.Add(AnimationFrame(gameObject, animationClip, t, w2l, bones));
+			frames.Add(AnimationFrame(t, w2l, bones));
 		}
 
 		var lines = AnimationLines(frames).Select(CompressLine).ToArray();
@@ -195,7 +226,7 @@ public class AnimationExporter : MonoBehaviour
 	}
 	static string[] FloatToStringArray(float[] f)
 	{
-		return f.Select(v => v.ToString()).ToArray();
+		return f.Select(v => v.ToString("F3")).ToArray();
 	}
 
 	static void WriteLine(Writer writer, Line line)

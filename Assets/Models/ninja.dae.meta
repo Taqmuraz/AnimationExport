@@ -1,0 +1,136 @@
+fileFormatVersion: 2
+guid: 5410dd69f0fafba4f8b84ab4fc9521bf
+timeCreated: 1720114225
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Armature
+    100002: Bedro_L
+    100004: Bedro_P
+    100006: Cube
+    100008: Cube.001
+    100010: Golova
+    100012: Golova_end
+    100014: Kluchitsa_L
+    100016: Kluchitsa_L_end
+    100018: Kluchitsa_P
+    100020: Kluchitsa_P_end
+    100022: Koleno_L
+    100024: Koleno_L_end
+    100026: Koleno_P
+    100028: Koleno_P_end
+    100030: Lokot_L
+    100032: Lokot_L_end
+    100034: Lokot_P
+    100036: Lokot_P_end
+    100038: //RootNode
+    100040: Ruka_L
+    100042: Ruka_P
+    100044: Skelet
+    100046: Tors
+    100048: Woin
+    400000: Armature
+    400002: Bedro_L
+    400004: Bedro_P
+    400006: Cube
+    400008: Cube.001
+    400010: Golova
+    400012: Golova_end
+    400014: Kluchitsa_L
+    400016: Kluchitsa_L_end
+    400018: Kluchitsa_P
+    400020: Kluchitsa_P_end
+    400022: Koleno_L
+    400024: Koleno_L_end
+    400026: Koleno_P
+    400028: Koleno_P_end
+    400030: Lokot_L
+    400032: Lokot_L_end
+    400034: Lokot_P
+    400036: Lokot_P_end
+    400038: //RootNode
+    400040: Ruka_L
+    400042: Ruka_P
+    400044: Skelet
+    400046: Tors
+    400048: Woin
+    2300000: Cube
+    2300002: Cube.001
+    3300000: Cube
+    3300002: Cube.001
+    4300000: Woin
+    4300002: Cube
+    4300004: Cube.001
+    9500000: //RootNode
+    13700000: Woin
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
