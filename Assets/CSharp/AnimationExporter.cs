@@ -12,23 +12,24 @@ public class AnimationExporter : MonoBehaviour
 	[SerializeField] AnimationClip[] animationClips;
 	[SerializeField] string outputPath;
 	[SerializeField] GameObject defaultStance;
+	[SerializeField] Vector3 scaleMultiplier = Vector3.one;
 
-	class TransformState
+	struct TransformState
 	{
-		public readonly Vector3 position;
-		public readonly Quaternion rotation;
+		public Vector3 position;
+		public Quaternion rotation;
+		public Vector3 scale;
 
-		public TransformState(Vector3 position, Quaternion rotation)
-        {
-            this.position = position;
-            this.rotation = rotation;
-        }
 		public static TransformState Create(Transform transform)
 		{
-			return new TransformState(transform.localPosition, transform.localRotation);
+			var t = new TransformState();
+			t.position = transform.localPosition;
+			t.rotation = transform.localRotation;
+			t.scale = transform.localScale;
+			return t;
 		}
 
-		public Matrix4x4 LocalMatrix() { return Matrix4x4.TRS(position, rotation, Vector3.one); }
+		public Matrix4x4 LocalMatrix() { return Matrix4x4.TRS(position, rotation, scale); }
     }
 
 	Dictionary<Transform, TransformState> states = new Dictionary<Transform, TransformState>();
@@ -36,7 +37,7 @@ public class AnimationExporter : MonoBehaviour
 	void Start()
 	{
 		var descendants = Descendants(transform);
-		states = descendants.ToDictionary(t => t, t => new TransformState(t.localPosition, t.localRotation));
+		states = descendants.ToDictionary(t => t, t => TransformState.Create(t));
 	}
 
 	void ResetStates()
@@ -112,14 +113,15 @@ public class AnimationExporter : MonoBehaviour
 		else return line;
 	}
 
-	static Bone TransformFrame(Func<Transform, Matrix4x4> source, Transform transform, float time)
+	Bone TransformFrame(Func<Transform, Matrix4x4> source, Transform transform, float time)
 	{
-		var sm = source(transform);
-		var nm = TransformState.Create(transform).LocalMatrix();
-
-		return new Bone(sm.inverse * nm, transform.name, time);
+		var t = TransformState.Create(transform);
+		t.position.x *= scaleMultiplier.x;
+		t.position.y *= scaleMultiplier.y;
+		t.position.z *= scaleMultiplier.z;
+		return new Bone(t.LocalMatrix(), transform.name, time);
 	}
-	static Bone[] AnimationFrame(float time, Func<Transform, Matrix4x4> w2l, Transform[] bones)
+	Bone[] AnimationFrame(float time, Func<Transform, Matrix4x4> w2l, Transform[] bones)
 	{
 		return bones.Select(b => TransformFrame(w2l, b, time)).ToArray();
 	}
@@ -190,7 +192,7 @@ public class AnimationExporter : MonoBehaviour
 		}
 	}
 
-	static IEnumerator CreateAnimation(GameObject gameObject, Func<Transform, Matrix4x4> w2l, AnimationClip animationClip, string outputPath)
+	IEnumerator CreateAnimation(GameObject gameObject, Func<Transform, Matrix4x4> w2l, AnimationClip animationClip, string outputPath)
 	{
 		var bones = Descendants(gameObject.transform).ToArray();
 		var frameCount = (int)(animationClip.length * animationClip.frameRate);
