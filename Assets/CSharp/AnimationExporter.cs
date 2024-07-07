@@ -10,9 +10,9 @@ using UnityEngine;
 public class AnimationExporter : MonoBehaviour
 {
 	[SerializeField] AnimationClip[] animationClips;
-	[SerializeField] string outputPath;
+	[SerializeField] string[] outputPaths;
 	[SerializeField] GameObject defaultStance;
-	[SerializeField] Vector3 scaleMultiplier = Vector3.one;
+	[SerializeField] Vector3 scaleMultiplier;
 
 	struct TransformState
 	{
@@ -179,22 +179,27 @@ public class AnimationExporter : MonoBehaviour
 			return;
 		}
 		
-		StartCoroutine(CreateAnimations(gameObject, animationClips, outputPath));
+		StartCoroutine(CreateAnimations(gameObject, animationClips, outputPaths));
 	}
 
-	IEnumerator CreateAnimations(GameObject gameObject, AnimationClip[] animationClips, string outputPath)
+	IEnumerator CreateAnimations(GameObject gameObject, AnimationClip[] animationClips, string[] outputPaths)
 	{
 		foreach (var animationClip in animationClips)
 		{
-			yield return StartCoroutine(CreateAnimation(gameObject, t => states[t].LocalMatrix(), animationClip, outputPath));
+			yield return StartCoroutine(CreateAnimation(gameObject, t => states[t].LocalMatrix(), animationClip, outputPaths));
 			ResetStates();
 			yield return new WaitForEndOfFrame();
 		}
 	}
 
-	IEnumerator CreateAnimation(GameObject gameObject, Func<Transform, Matrix4x4> w2l, AnimationClip animationClip, string outputPath)
+	IEnumerator CreateAnimation(GameObject gameObject, Func<Transform, Matrix4x4> w2l, AnimationClip animationClip, string[] outputPaths)
 	{
-		var bones = Descendants(gameObject.transform).ToArray();
+		var bones = Descendants(gameObject.transform).Where(t => t.gameObject.tag != "Ignore").ToArray();
+		var framePreprocessors = GetComponentsInChildren<IFramePreprocessor>();
+		Action proc = framePreprocessors
+			.Select<IFramePreprocessor, Action>(f => f.Call)
+			.Aggregate<Action, Action>(() => { }, (a, b) => a + b);
+
 		var frameCount = (int)(animationClip.length * animationClip.frameRate);
 		if (animationClip.length == 0) frameCount = 1;
 
@@ -205,6 +210,7 @@ public class AnimationExporter : MonoBehaviour
 			var t = f / (float)frameCount;
 			animationClip.SampleAnimation(gameObject, t);
 			yield return new WaitForEndOfFrame();
+			proc();
 			frames.Add(AnimationFrame(t, w2l, bones));
 		}
 
@@ -214,10 +220,13 @@ public class AnimationExporter : MonoBehaviour
 
 		var writer = new StringBuilder();
 		WriteAnimation(s => writer.Append(s), animationClip.name, animationClip.length, lines);
-		Directory.CreateDirectory(outputPath);
-		var fileName = Path.Combine(outputPath, animationClip.name.ToLower()) + ".clj";
-		File.WriteAllText(fileName, writer.ToString());
-		Debug.Log("Saved animation : " + Path.GetFullPath(fileName));
+		foreach (var outputPath in outputPaths)
+		{
+			Directory.CreateDirectory(outputPath);
+			var fileName = Path.Combine(outputPath, animationClip.name.ToLower()) + ".clj";
+			File.WriteAllText(fileName, writer.ToString());
+			Debug.Log("Saved animation : " + Path.GetFullPath(fileName));
+		}
 	}
 
 	delegate void Writer(string text);
