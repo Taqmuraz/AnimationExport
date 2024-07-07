@@ -11,6 +11,7 @@ public class AnimationExporter : MonoBehaviour
 {
 	[SerializeField] AnimationClip[] animationClips;
 	[SerializeField] string[] outputPaths;
+	[SerializeField] string directoryName;
 	[SerializeField] GameObject defaultStance;
 	[SerializeField] Vector3 scaleMultiplier;
 
@@ -179,20 +180,20 @@ public class AnimationExporter : MonoBehaviour
 			return;
 		}
 		
-		StartCoroutine(CreateAnimations(gameObject, animationClips, outputPaths));
+		StartCoroutine(CreateAnimations(gameObject));
 	}
 
-	IEnumerator CreateAnimations(GameObject gameObject, AnimationClip[] animationClips, string[] outputPaths)
+	IEnumerator CreateAnimations(GameObject gameObject)
 	{
 		foreach (var animationClip in animationClips)
 		{
-			yield return StartCoroutine(CreateAnimation(gameObject, t => states[t].LocalMatrix(), animationClip, outputPaths));
+			yield return StartCoroutine(CreateAnimation(gameObject, t => states[t].LocalMatrix(), animationClip));
 			ResetStates();
 			yield return new WaitForEndOfFrame();
 		}
 	}
 
-	IEnumerator CreateAnimation(GameObject gameObject, Func<Transform, Matrix4x4> w2l, AnimationClip animationClip, string[] outputPaths)
+	IEnumerator CreateAnimation(GameObject gameObject, Func<Transform, Matrix4x4> w2l, AnimationClip animationClip)
 	{
 		var bones = Descendants(gameObject.transform).Where(t => t.gameObject.tag != "Ignore").ToArray();
 		var framePreprocessors = GetComponentsInChildren<IFramePreprocessor>();
@@ -222,8 +223,9 @@ public class AnimationExporter : MonoBehaviour
 		WriteAnimation(s => writer.Append(s), animationClip.name, animationClip.length, lines);
 		foreach (var outputPath in outputPaths)
 		{
-			Directory.CreateDirectory(outputPath);
-			var fileName = Path.Combine(outputPath, animationClip.name.ToLower()) + ".clj";
+			var dir = Path.Combine(outputPath, directoryName);
+			Directory.CreateDirectory(dir);
+			var fileName = Path.Combine(dir, animationClip.name.ToLower()) + ".clj";
 			File.WriteAllText(fileName, writer.ToString());
 			Debug.Log("Saved animation : " + Path.GetFullPath(fileName));
 		}
