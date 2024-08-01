@@ -18,17 +18,19 @@ public class AnimationExporter : MonoBehaviour
 	struct TransformState
 	{
 		public Vector3 position;
-		public Vector3 rotation;
+		public Quaternion rotation;
 		public Vector3 scale;
 
 		public static TransformState Create(Transform transform)
 		{
 			var t = new TransformState();
 			t.position = transform.localPosition;
-			t.rotation = transform.localEulerAngles;
+			t.rotation = transform.localRotation;
 			t.scale = transform.localScale;
 			return t;
 		}
+
+		public Matrix4x4 LocalMatrix() { return Matrix4x4.TRS(position, rotation, scale); }
 
 		public bool Equals(TransformState t)
 		{
@@ -59,7 +61,7 @@ public class AnimationExporter : MonoBehaviour
 		{
 			var t = states[d];
 			d.localPosition = t.position;
-			d.localEulerAngles = t.rotation;
+			d.localRotation = t.rotation;
 		}
 	}
 
@@ -205,8 +207,6 @@ public class AnimationExporter : MonoBehaviour
 		}
 	}
 
-	static List<string> vectors = new List<string>();
-
 	IEnumerator CreateAnimation(GameObject gameObject, AnimationClip animationClip)
 	{
 		var bones = Descendants(gameObject.transform).Where(t => t.gameObject.tag != "Ignore").ToArray();
@@ -234,9 +234,7 @@ public class AnimationExporter : MonoBehaviour
 		yield return new WaitForEndOfFrame();
 
 		var writer = new StringBuilder();
-		vectors.Clear();
 		WriteAnimation(s => writer.Append(s), animationClip.name, animationClip.length, lines);
-		Debug.Log(string.Format("{0}/{1}", vectors.Count, vectors.Distinct().Count()));
 		foreach (var outputPath in outputPaths)
 		{
 			var dir = Path.Combine(outputPath, directoryName);
@@ -258,14 +256,18 @@ public class AnimationExporter : MonoBehaviour
 
 	static void WriteVector3(Writer writer, ResourceWriter resourceWriter, Vector3 vec)
 	{
+		var sb = new StringBuilder();
+		writer = writer + (s => sb.Append(s));
 		WriteArray(writer, resourceWriter, new float[] { vec.x, vec.y, vec.z }, f => f.ToString("F3"));
 	}
 
 	static void WriteTransform(Writer writer, ResourceWriter resourceWriter, TransformState transform)
 	{
-		WriteVector3(writer, resourceWriter, transform.position);
-		WriteVector3(writer, resourceWriter, transform.rotation);
-		WriteVector3(writer, resourceWriter, transform.scale);
+		var mat = transform.LocalMatrix();
+		WriteVector3(writer, resourceWriter, mat.GetColumn(0));
+		WriteVector3(writer, resourceWriter, mat.GetColumn(1));
+		WriteVector3(writer, resourceWriter, mat.GetColumn(2));
+		WriteVector3(writer, resourceWriter, mat.GetColumn(3));
 	}
 
 	static void WriteLine(Writer writer, ResourceWriter resourceWriter, Line line)
@@ -302,7 +304,8 @@ public class AnimationExporter : MonoBehaviour
 
 		writer("{ " + string.Format(":name \"{0}\" :length {1} :bones", name, length) + " { ");
 		foreach (var line in lines) WriteLine(writer, resourceWriter, line);
+		writer("\n\t}");
 		writer(string.Format("\n\t:resources [\n\t\t{0}]", string.Join("\n\t\t", values.ToArray())));
-		writer("\n} }");
+		writer("\n}");
 	}
 }
