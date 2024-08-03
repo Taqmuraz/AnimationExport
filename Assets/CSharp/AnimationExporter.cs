@@ -216,13 +216,14 @@ public class AnimationExporter : MonoBehaviour
 			.Aggregate<Action, Action>(() => { }, (a, b) => a + b);
 
 		var frameCount = (int)(animationClip.length * animationClip.frameRate);
-		if (animationClip.length == 0) frameCount = 1;
+		var length = animationClip.length;
+		if (length == 0) frameCount = 1;
 
 		List<Bone[]> frames = new List<Bone[]>();
 
 		foreach (var f in Enumerable.Range(0, frameCount))
 		{
-			var t = f / (float)frameCount;
+			var t = (f / (float)frameCount) * length;
 			animationClip.SampleAnimation(gameObject, t);
 			yield return new WaitForEndOfFrame();
 			proc();
