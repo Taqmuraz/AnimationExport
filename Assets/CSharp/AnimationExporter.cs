@@ -240,7 +240,7 @@ public class AnimationExporter : MonoBehaviour
 		{
 			var dir = Path.Combine(outputPath, directoryName);
 			Directory.CreateDirectory(dir);
-			var fileName = Path.Combine(dir, animationClip.name.ToLower()) + ".clj";
+			var fileName = Path.Combine(dir, animationClip.name.ToLower()) + ".anim";
 			File.WriteAllText(fileName, writer.ToString());
 			Debug.Log("Saved animation : " + Path.GetFullPath(fileName));
 		}
