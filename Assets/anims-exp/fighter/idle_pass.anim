@@ -1,4 +1,4 @@
-{ :name "Idle" :length 2 :bones { 
+{ :name "Idle_pass" :length 2 :bones { 
 	"Skelet" [
 		[ 0 [ 0 1 2 3 ] ]
 	]

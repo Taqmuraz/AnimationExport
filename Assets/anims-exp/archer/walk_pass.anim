@@ -1,4 +1,4 @@
-{ :name "Walk" :length 0.6666667 :bones { 
+{ :name "Walk_pass" :length 0.6666667 :bones { 
 	"Skelet" [
 		[ 0 [ 0 1 2 3 ] ]
 		[ 0.008333334 [ 0 1 2 4 ] ]
