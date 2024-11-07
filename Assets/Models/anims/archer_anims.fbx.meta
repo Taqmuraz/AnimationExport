@@ -1,0 +1,221 @@
+fileFormatVersion: 2
+guid: 4de9fb5e68acd4902bb435ad656b9a2a
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Armature
+    100004: Armature.001
+    100006: Bedro_L
+    100008: Bedro_P
+    100010: Bow
+    100012: Bow_1
+    100014: Bow_1_end
+    100016: Bow_1_end_end
+    100018: Bow_1_end_end_end
+    100020: Bow_2
+    100022: Bow_2_end
+    100024: Bow_2_end_end
+    100026: Bow_2_end_end_end
+    100028: Cylinder
+    100030: Golova
+    100032: Golova_end
+    100034: Golova_end_end
+    100036: Kluchitsa_L
+    100038: Kluchitsa_L_end
+    100040: Kluchitsa_L_end_end
+    100042: Kluchitsa_P
+    100044: Kluchitsa_P_end
+    100046: Kluchitsa_P_end_end
+    100048: Kolchan
+    100050: Koleno_L
+    100052: Koleno_L_end
+    100054: Koleno_L_end_end
+    100056: Koleno_P
+    100058: Koleno_P_end
+    100060: Koleno_P_end_end
+    100062: Lokot_L
+    100064: Lokot_L_end
+    100066: Lokot_L_end_end
+    100068: Lokot_P
+    100070: Lokot_P_end
+    100072: Lokot_P_end_end
+    100074: Luchnik
+    100076: Rope
+    100078: Rope_end
+    100080: Rope_end_end
+    100082: Rope_end_end_end
+    100084: Ruka_L
+    100086: Ruka_P
+    100088: Skelet
+    100090: Tors
+    400000: //RootNode
+    400002: Armature
+    400004: Armature.001
+    400006: Bedro_L
+    400008: Bedro_P
+    400010: Bow
+    400012: Bow_1
+    400014: Bow_1_end
+    400016: Bow_1_end_end
+    400018: Bow_1_end_end_end
+    400020: Bow_2
+    400022: Bow_2_end
+    400024: Bow_2_end_end
+    400026: Bow_2_end_end_end
+    400028: Cylinder
+    400030: Golova
+    400032: Golova_end
+    400034: Golova_end_end
+    400036: Kluchitsa_L
+    400038: Kluchitsa_L_end
+    400040: Kluchitsa_L_end_end
+    400042: Kluchitsa_P
+    400044: Kluchitsa_P_end
+    400046: Kluchitsa_P_end_end
+    400048: Kolchan
+    400050: Koleno_L
+    400052: Koleno_L_end
+    400054: Koleno_L_end_end
+    400056: Koleno_P
+    400058: Koleno_P_end
+    400060: Koleno_P_end_end
+    400062: Lokot_L
+    400064: Lokot_L_end
+    400066: Lokot_L_end_end
+    400068: Lokot_P
+    400070: Lokot_P_end
+    400072: Lokot_P_end_end
+    400074: Luchnik
+    400076: Rope
+    400078: Rope_end
+    400080: Rope_end_end
+    400082: Rope_end_end_end
+    400084: Ruka_L
+    400086: Ruka_P
+    400088: Skelet
+    400090: Tors
+    2100000: Bow
+    2100002: Strela
+    2100004: Kolchan
+    2100006: Odezhda_tsvet
+    2100008: Odezhda
+    2100010: Kozha
+    2100012: Volosi
+    2300000: Kolchan
+    3300000: Kolchan
+    4300000: Cylinder
+    4300002: Kolchan
+    4300004: Luchnik
+    7400000: idle_pass
+    9500000: //RootNode
+    13700000: Cylinder
+    13700002: Luchnik
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: idle_pass
+      takeName: Armature|archer_idle_pass
+      firstFrame: 0
+      lastFrame: 120
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

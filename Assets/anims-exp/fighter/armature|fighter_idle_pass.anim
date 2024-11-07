@@ -1,4 +1,4 @@
-{ :name "idle_pass" :length 1.666667 :bones { 
+{ :name "Armature|fighter_idle_pass" :length 1.666667 :bones { 
 	"Skelet" [
 		[ 0 [ 0 1 2 3 ] ]
 		[ 0.04166667 [ 0 1 2 3 ] ]

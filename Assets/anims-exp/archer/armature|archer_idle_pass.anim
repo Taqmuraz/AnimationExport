@@ -1,4 +1,4 @@
-{ :name "idle_pass" :length 5 :bones { 
+{ :name "Armature|archer_idle_pass" :length 5 :bones { 
 	"Skelet" [
 		[ 0 [ 0 1 2 3 ] ]
 		[ 0.04166667 [ 4 5 2 3 ] ]
