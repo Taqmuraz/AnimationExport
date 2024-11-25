@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4de9fb5e68acd4902bb435ad656b9a2a
+guid: ea5a43f0a6a424384a253932d589ecf7
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
@@ -107,7 +107,8 @@ ModelImporter:
     4300000: Cylinder
     4300002: Kolchan
     4300004: Luchnik
-    7400000: idle_pass
+    7400000: Armature|archer_idle_pass
+    7400002: Armature|walk_crowd
     9500000: //RootNode
     13700000: Cylinder
     13700002: Luchnik
@@ -137,35 +138,7 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations:
-    - serializedVersion: 16
-      name: idle_pass
-      takeName: Armature|archer_idle_pass
-      firstFrame: 0
-      lastFrame: 120
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
+    clipAnimations: []
     isReadable: 1
   meshes:
     lODScreenPercentages: []

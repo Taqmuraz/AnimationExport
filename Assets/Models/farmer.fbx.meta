@@ -1,12 +1,12 @@
 fileFormatVersion: 2
-guid: e738626953fdd4631b317acfa17d1649
+guid: f75f667001553491fb325a44b2588376
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: Armature
     100002: Bedro_L
     100004: Bedro_P
-    100006: Camera
+    100006: //RootNode
     100008: Golova
     100010: Golova_end
     100012: Golova_end_end
@@ -22,23 +22,21 @@ ModelImporter:
     100032: Koleno_P
     100034: Koleno_P_end
     100036: Koleno_P_end_end
-    100038: Lamp
-    100040: Lokot_L
-    100042: Lokot_L_end
-    100044: Lokot_L_end_end
-    100046: Lokot_P
-    100048: Lokot_P_end
-    100050: Lokot_P_end_end
-    100052: Mag
-    100054: //RootNode
-    100056: Ruka_L
-    100058: Ruka_P
-    100060: Skelet
-    100062: Tors
+    100038: Lokot_L
+    100040: Lokot_L_end
+    100042: Lokot_L_end_end
+    100044: Lokot_P
+    100046: Lokot_P_end
+    100048: Lokot_P_end_end
+    100050: Luchnik
+    100052: Ruka_L
+    100054: Ruka_P
+    100056: Skelet
+    100058: Tors
     400000: Armature
     400002: Bedro_L
     400004: Bedro_P
-    400006: Camera
+    400006: //RootNode
     400008: Golova
     400010: Golova_end
     400012: Golova_end_end
@@ -54,29 +52,25 @@ ModelImporter:
     400032: Koleno_P
     400034: Koleno_P_end
     400036: Koleno_P_end_end
-    400038: Lamp
-    400040: Lokot_L
-    400042: Lokot_L_end
-    400044: Lokot_L_end_end
-    400046: Lokot_P
-    400048: Lokot_P_end
-    400050: Lokot_P_end_end
-    400052: Mag
-    400054: //RootNode
-    400056: Ruka_L
-    400058: Ruka_P
-    400060: Skelet
-    400062: Tors
-    2000000: Camera
-    2100000: Odezhda
-    2100002: Odezhda_tsvet
+    400038: Lokot_L
+    400040: Lokot_L_end
+    400042: Lokot_L_end_end
+    400044: Lokot_P
+    400046: Lokot_P_end
+    400048: Lokot_P_end_end
+    400050: Luchnik
+    400052: Ruka_L
+    400054: Ruka_P
+    400056: Skelet
+    400058: Tors
+    2100000: Odezhda_tsvet
+    2100002: Odezhda
     2100004: Kozha
-    2100006: Face
-    4300000: Mag
-    7400000: Armature|riding
+    2100006: Volosi
+    4300000: Luchnik
+    7400000: Armature|archer_idle_pass
     9500000: //RootNode
-    10800000: Lamp
-    13700000: Mag
+    13700000: Luchnik
   externalObjects: {}
   materials:
     importMaterials: 1

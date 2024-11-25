@@ -1,86 +1,105 @@
 fileFormatVersion: 2
-guid: fff2ee36b189a4f47ba437f9dbd6442c
+guid: 4b0ec637554b84d15867c3af66bb0811
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: Armature
     100002: Bedro_L
     100004: Bedro_P
-    100006: Cube
-    100008: Cube.001
+    100006: Empty
+    100008: //RootNode
     100010: Golova
     100012: Golova_end
     100014: Golova_end_end
-    100016: Kluchitsa_L
-    100018: Kluchitsa_L_end
-    100020: Kluchitsa_L_end_end
-    100022: Kluchitsa_P
-    100024: Kluchitsa_P_end
-    100026: Kluchitsa_P_end_end
-    100028: Koleno_L
-    100030: Koleno_L_end
-    100032: Koleno_L_end_end
-    100034: Koleno_P
-    100036: Koleno_P_end
-    100038: Koleno_P_end_end
-    100040: Lokot_L
-    100042: Lokot_L_end
-    100044: Lokot_L_end_end
-    100046: Lokot_P
-    100048: Lokot_P_end
-    100050: Lokot_P_end_end
-    100052: //RootNode
-    100054: Ruka_L
-    100056: Ruka_P
-    100058: Skelet
-    100060: Tors
-    100062: Woin
+    100016: Golova_end_end_end
+    100018: Kluchitsa_L
+    100020: Kluchitsa_L_end
+    100022: Kluchitsa_L_end_end
+    100024: Kluchitsa_L_end_end_end
+    100026: Kluchitsa_P
+    100028: Kluchitsa_P_end
+    100030: Kluchitsa_P_end_end
+    100032: Kluchitsa_P_end_end_end
+    100034: Koleno_L
+    100036: Koleno_L_end
+    100038: Koleno_L_end_end
+    100040: Koleno_L_end_end_end
+    100042: Koleno_P
+    100044: Koleno_P_end
+    100046: Koleno_P_end_end
+    100048: Koleno_P_end_end_end
+    100050: Lokot_L
+    100052: Lokot_L_end
+    100054: Lokot_L_end_end
+    100056: Lokot_L_end_end_end
+    100058: Lokot_P
+    100060: Lokot_P_end
+    100062: Lokot_P_end_end
+    100064: Lokot_P_end_end_end
+    100066: Ruka_L
+    100068: Ruka_P
+    100070: Shit
+    100072: Skelet
+    100074: Sword
+    100076: Tors
+    100078: Woin
     400000: Armature
     400002: Bedro_L
     400004: Bedro_P
-    400006: Cube
-    400008: Cube.001
+    400006: Empty
+    400008: //RootNode
     400010: Golova
     400012: Golova_end
     400014: Golova_end_end
-    400016: Kluchitsa_L
-    400018: Kluchitsa_L_end
-    400020: Kluchitsa_L_end_end
-    400022: Kluchitsa_P
-    400024: Kluchitsa_P_end
-    400026: Kluchitsa_P_end_end
-    400028: Koleno_L
-    400030: Koleno_L_end
-    400032: Koleno_L_end_end
-    400034: Koleno_P
-    400036: Koleno_P_end
-    400038: Koleno_P_end_end
-    400040: Lokot_L
-    400042: Lokot_L_end
-    400044: Lokot_L_end_end
-    400046: Lokot_P
-    400048: Lokot_P_end
-    400050: Lokot_P_end_end
-    400052: //RootNode
-    400054: Ruka_L
-    400056: Ruka_P
-    400058: Skelet
-    400060: Tors
-    400062: Woin
-    2100000: Katana
-    2100002: Klinok_katana
-    2100004: Odezjda
-    2100006: Odezhda_tsvet.001
-    2100008: Face
-    2300000: Cube
-    2300002: Cube.001
-    3300000: Cube
-    3300002: Cube.001
-    4300000: Cube.001
-    4300002: Cube
+    400016: Golova_end_end_end
+    400018: Kluchitsa_L
+    400020: Kluchitsa_L_end
+    400022: Kluchitsa_L_end_end
+    400024: Kluchitsa_L_end_end_end
+    400026: Kluchitsa_P
+    400028: Kluchitsa_P_end
+    400030: Kluchitsa_P_end_end
+    400032: Kluchitsa_P_end_end_end
+    400034: Koleno_L
+    400036: Koleno_L_end
+    400038: Koleno_L_end_end
+    400040: Koleno_L_end_end_end
+    400042: Koleno_P
+    400044: Koleno_P_end
+    400046: Koleno_P_end_end
+    400048: Koleno_P_end_end_end
+    400050: Lokot_L
+    400052: Lokot_L_end
+    400054: Lokot_L_end_end
+    400056: Lokot_L_end_end_end
+    400058: Lokot_P
+    400060: Lokot_P_end
+    400062: Lokot_P_end_end
+    400064: Lokot_P_end_end_end
+    400066: Ruka_L
+    400068: Ruka_P
+    400070: Shit
+    400072: Skelet
+    400074: Sword
+    400076: Tors
+    400078: Woin
+    2100000: Sword
+    2100002: Klinok
+    2100004: Shit
+    2100006: Kolchuga
+    2100008: Metall_color
+    2100010: Metall
+    2100012: Face.001
+    2300000: Shit
+    2300002: Sword
+    3300000: Shit
+    3300002: Sword
+    4300000: Sword
+    4300002: Shit
     4300004: Woin
-    7400000: Armature|ninja_idle_pass
-    7400002: Armature|walk_crowd
+    7400000: Armature|block
+    7400002: Armature|fighter_idle_pass
+    7400004: Armature|fighter_idle_pass_1
     9500000: //RootNode
     13700000: Woin
   externalObjects: {}
